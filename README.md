@@ -1,73 +1,68 @@
-# Anime Recommendation System
+# 🎬 Anime Recommendation System
 
-A content-based recommendation engine built with Python that suggests similar anime based on shared genres, media types, and episode counts. The system uses **Natural Language Processing (NLP)** techniques to quantify anime metadata and **Cosine Similarity** to measure the distance between different titles.
+A content-based recommendation engine built with Python that suggests similar anime based on shared genres, media types, and episode counts. The system uses **Natural Language Processing (NLP)** techniques and **Cosine Similarity** to find the perfect match for your next binge-watch.
 
 ---
 
-## 🚀 Features
-* **Content-Based Filtering:** Recommends anime by analyzing metadata tags rather than user ratings.
-* **Text Vectorization:** Implements `CountVectorizer` to transform categorical data into numerical vectors.
-* **Interactive UI:** A clean, user-friendly interface built with **Streamlit**.
-* **Automated Data Fetching:** Integrated with `kagglehub` to pull the latest dataset directly.
+## 🚀 Live Demo
+Check out the live application here:  
+👉 **[Anime Recommender App](https://anime-recommendation-system-ris.streamlit.app/)**
+
+---
+
+## ✨ Features
+* **Search & Select:** Choose from over 12,000 anime titles.
+* **Smart Recommendations:** Returns the top 5 most similar anime based on metadata.
+* **"See More" Functionality:** Dynamically load additional recommendations using Streamlit session state.
+* **NLP Powered:** Uses `CountVectorizer` (Bag of Words) to process anime tags.
 
 ---
 
 ## 🛠️ Tech Stack
 * **Language:** Python 3.x
-* **Data Manipulation:** Pandas, NumPy
-* **Machine Learning:** Scikit-Learn (`CountVectorizer`, `cosine_similarity`)
-* **Web Framework:** Streamlit
-* **Deployment/Storage:** Pickle (for model serialization)
+* **Data Science:** Pandas, NumPy, Scikit-Learn
+* **App Framework:** Streamlit
+* **Version Control:** Git LFS (for handling large similarity matrices)
 
 ---
 
 ## 📂 Project Structure
-* `app.py`: The Streamlit web application.
-* `anime_recommendation_content_based.ipynb`: Notebook for data cleaning, EDA, and model building.
-* `animes.pkl`: Serialized DataFrame containing processed anime titles and tags.
-* `simil.pkl`: The pre-calculated Cosine Similarity matrix.
+* `app.py`: The Streamlit web application interface.
+* `anime_recommendation_content_based.ipynb`: Data preprocessing and model building notebook.
+* `animes.pkl`: Serialized processed anime data.
+* `simil.pkl`: The pre-calculated Cosine Similarity matrix (stored via Git LFS).
 
 ---
 
 ## 📊 How It Works
 
 
+1.  **Preprocessing:** Genres and types are cleaned and merged into a single `tag` string.
+2.  **Vectorization:** Each anime's tags are converted into a numerical vector using a 1000-word vocabulary.
+3.  **Similarity:** We calculate the **Cosine Similarity** between vectors. 
+    
+    $$\text{similarity} = \cos(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\| \|\mathbf{B}\|}$$
 
-1.  **Data Preprocessing:** Genres, types, and episode counts are cleaned and merged into a single `tag` column.
-2.  **Vectorization:** The `tag` strings are converted into a 1000-dimensional vector space using Bag of Words.
-3.  **Similarity Matrix:** We calculate the cosine of the angle between vectors. A value closer to **1** indicates high similarity.
-4.  **Retrieval:** When a user selects an anime, the system sorts the similarity scores and returns the top 5 closest matches.
-
+4.  **Ranking:** When you select an anime, the app finds the vectors with the smallest "distance" to your selection and displays them.
 
 ---
 
-## 🔧 Installation & Setup
+## 🔧 Local Installation
 
-1.  **Clone the repository:**
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/CoderRishik022/Anime-Recommendation-System.git](https://github.com/CoderRishik022/Anime-Recommendation-System.git)
+   cd Anime-Recommendation-System
+
+2. **Install Git LFS (Required for the similarity matrix):**
     ```bash
-    git clone [https://github.com/your-username/anime-recommender.git](https://github.com/your-username/anime-recommender.git)
-    cd anime-recommender
-    ```
+    git lfs install
+    git lfs pull
 
-2.  **Install dependencies:**
+3. **Install dependencies:**
     ```bash
-    pip install streamlit pandas numpy scikit-learn kagglehub
-    ```
+    pip install -r requirements.txt
 
-3.  **Generate the Models:**
-    Run all cells in the `.ipynb` file to download the dataset and create the `animes.pkl` and `simil.pkl` files.
-
-4.  **Launch the App:**
+4. **Run the App:**
     ```bash
     streamlit run app.py
-    ```
-
----
-
-## 📝 Dataset
-The project utilizes the **Anime Recommendations Database** from Kaggle, featuring over 12,000 anime titles.
-
----
-
-## 🤝 Contributing
-Feel free to fork this project and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
