@@ -51,7 +51,7 @@ Check out the live application here:
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/CoderRishik022/Anime-Recommendation-System.git](https://github.com/CoderRishik022/Anime-Recommendation-System.git)
+   git clone [https://github.com/Rickmon022/Anime-Recommendation-System.git](https://github.com/Rickmon022/Anime-Recommendation-System.git)
    cd Anime-Recommendation-System
 
 2. **Install Git LFS (Required for the similarity matrix):**
